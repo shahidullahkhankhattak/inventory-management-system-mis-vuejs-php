@@ -1,0 +1,27 @@
+
+            <div class="contain animated zoomIn" align="center">
+                <router-link class="btn btn-floating waves-effect btn-large teal darken-2" to="/" style="float:left;"><i class="material-icons left">arrow_back</i></router-link>
+                <div style="clear:both"></div>
+                <h4 class="teal darken-2 white-text" style="padding:10px;">Total Stock</h4>
+                <table class="responsive-table striped">
+                        <thead>
+                          <tr>
+                              <th>Item Name</th>
+                              <th>Available Stock Amount</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody>
+                          <tr v-if="stocks.length == 0">
+                            <td colspan="2" style="text-align:center;">
+                              <h5>No Stock Available</h5>
+                            </td>
+                          </tr>
+                          <tr v-for="stock in stocks">
+                            <td>{{stock.name}}</td>
+                            <td>{{stock.available_stock}}</td>
+                          </td>
+                          </tr>
+                        </tbody>
+                </table>
+            </div> 

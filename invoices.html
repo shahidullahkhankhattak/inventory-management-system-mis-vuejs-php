@@ -1,0 +1,60 @@
+
+            <div class="contain animated zoomIn" align="center">
+                <router-link class="btn btn-floating waves-effect btn-large teal darken-2" to="/" style="float:left;"><i class="material-icons left">arrow_back</i></router-link>
+                <div style="clear:both"></div>
+                <div style="margin-top:10px;padding:25px;padding-top:10px;box-shadow:0px 0px 5px rgba(0,0,0,0.15); box-shadow:0px 0px 25px rgba(0,0,0,0.25);background:white;border-radius:4px;" align="left">
+                  <h5>New Purchase</h5>
+                  <form @submit.prevent="makePurchase()">
+                    <div class="row">
+                      <div class="col m6">
+                        <input type="text" placeholder="Enter Item Name . . " v-model="item.name">
+                      </div>
+                      <div class="col m6">
+                        <input type="number" placeholder="Enter Item Quantity . ." v-model="item.quantity" required>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col m6">
+                        <input type="number" placeholder="Enter Per Item Price . . " v-model="item.price" required>
+                      </div>
+                      <div class="col m6">
+                        <input type="text" placeholder="Total Amount . . " :value="item.quantity*item.price" disabled>
+                      </div>
+                      <div class="col m6">
+                        <button type="submit" class="btn btn-primary"><i class="material-icons left">&#xE876;</i>Make Purchase</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <h4 class="teal darken-2 white-text" style="padding:10px;">Purchases</h4>
+                <table class="responsive-table striped">
+                        <thead>
+                          <tr>
+                              <th>Item Name</th>
+                              <th>Price</th>
+                              <th>Quantity</th>
+                              <th>Cash Value</th>
+                              <th>Date</th>
+                              <th>Action</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody>
+                        <tr v-if="items.length == 0">
+                          <td colspan="6" style="text-align:center;">
+                            <h5>No Items Found</h5>
+                          </td>
+                        </tr>
+                          <tr v-for="item in items">
+                            <td>{{item.name}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.price * item.quantity }}</td>
+                            <td>{{item.date}}</td>
+                            <td>
+                              <a @click="deleteItem(item.id)" style="cursor:hand;cursor:pointer;">Delete</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                </table>
+            </div> 

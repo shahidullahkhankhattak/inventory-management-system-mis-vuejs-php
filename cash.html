@@ -1,0 +1,25 @@
+
+            <div class="contain animated fadeIn" align="center">
+                <router-link class="btn btn-floating waves-effect btn-large" to="accounts" style="float:left;"><i class="material-icons left">arrow_back</i></router-link>
+                <div style="clear:both"></div>
+                <h4 class="teal darken-2 white-text" style="padding:10px;">Business Overall Cash Details</h4>
+                <div class="row teal lighten-3">
+                        <div class="col s12 teal darken-3">
+                          <ul class="tabs tabs-fixed-width tabs-transparent">
+                            <li class="tab col s3"><a href="#cashdetails">Total Revenue</a></li>
+                            <li class="tab col s3"><a class="active" href="#inventorydetails">Inventory</a></li>
+                            <li class="tab col s3"><a href="#recievablesdetails">Recievables</a></li>
+                          </ul>
+                        </div>
+                        <div id="cashdetails" class="col s12 text-center">
+                                <h3>Rs. {{cash ? cash : 0}}</h3>
+                        </div>
+                        <div id="inventorydetails" class="col s12 text-center">
+                                <h3>Rs. {{inventory ? inventory : 0}}</h3>
+                        </div>
+                        <div id="recievablesdetails" class="col s12 text-center">
+                                <h3>Rs. {{recievables ? recievables : 0}}</h3>
+                        </div>
+                </div>
+                            
+            </div> 

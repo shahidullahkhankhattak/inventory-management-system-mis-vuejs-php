@@ -1,0 +1,28 @@
+
+            <div class="contain animated fadeInDown" align="center">
+                <router-link class="btn btn-floating waves-effect btn-large blue darken-2" to="/accounts" style="float:left;"><i class="material-icons left">arrow_back</i></router-link>
+                <div style="clear:both"></div>
+                <h4 class="blue darken-2 white-text" style="padding:10px;">Business Overall Recievable Details</h4>
+                <table class="responsive-table striped">
+                        <thead>
+                          <tr>
+                              <th>Customer</th>
+                              <th>Recievable Amount</th>
+                              <th>Days Outstanding</th>
+                              <th>Details</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody>
+                          <tr>
+                            <td colspan="4" style="text-align:center;" v-if="recievables.length == 0">No Recievable</td>
+                          </tr>
+                          <tr v-for="recievable in recievables">
+                            <td>{{recievable.contact_name}}</td>
+                            <td>{{recievable.recievables}}</td>
+                            <td>{{recievable.days}}</td>
+                            <td><router-link :to="'/credit-sales/'+recievable.contact_id">View Details</router-link></td>
+                          </tr>
+                        </tbody>
+                </table>
+            </div>

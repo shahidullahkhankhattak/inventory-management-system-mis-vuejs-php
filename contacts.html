@@ -1,0 +1,53 @@
+
+            <div class="contain animated fadeInLeft" align="center">
+                <router-link class="btn btn-floating waves-effect btn-large green darken-2" to="/" style="float:left;"><i class="material-icons left">arrow_back</i></router-link>
+                <div style="clear:both"></div>
+                <div style="margin-top:10px;padding:25px;padding-top:10px;box-shadow:0px 0px 5px rgba(0,0,0,0.15); box-shadow:0px 0px 25px rgba(0,0,0,0.25);background:white;border-radius:4px;" align="left">
+                  <h5>Add Contact</h5>
+                  <form @submit.prevent="addContact()">
+                    <div class="row">
+                      <div class="col m6">
+                        <input type="text" placeholder="Enter Contact Name . . " v-model="contact.name">
+                      </div>
+                      <div class="col m6">
+                        <input type="text" placeholder="Enter Phone Number . ." v-model="contact.phone">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col m6">
+                        <input type="text" placeholder="Enter Contact Address" v-model="contact.address">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col m6">
+                        <button type="submit" class="btn green darken-3"><i class="material-icons left">&#xE876;</i>Add Contact</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <h4 class="green darken-2 white-text" style="padding:10px;">Business Overall Contacts</h4>
+                <table class="responsive-table striped">
+                        <thead>
+                          <tr>
+                              <th>Customer</th>
+                              <th>Contact Number</th>
+                              <th>Address</th>
+                              <th>Action</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody>
+                          <tr v-if="contacts.length == 0">
+                              <td colspan="4" style="text-align:center;">
+                                <h5>No Items Found</h5>
+                              </td>
+                          </tr>
+                          <tr v-for="contact in contacts" v-if="contact.name != 'N/A'">
+                            <td>{{contact.name}}</td>
+                            <td>{{contact.phone}}</td>
+                            <td>{{contact.address}}</td>
+                            <td><router-link :to="'/sale-details/'+contact.id">View Details</router-link> / <a @click="deleteContact(contact.id)">Delete</a></td>
+                          </tr>
+                        </tbody>
+                </table>
+            </div>

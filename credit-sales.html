@@ -1,0 +1,32 @@
+
+            <div class="contain animated fadeIn" align="center">
+                <router-link class="btn btn-floating waves-effect btn-large blue darken-2" to="/recievables" style="float:left;"><i class="material-icons left">arrow_back</i></router-link>
+                <div style="clear:both"></div>
+                <h4 class="blue darken-2 white-text" style="padding:10px;">{{sales[0] ? sales[0].contact_name : ''}} Credit Sales Details</h4>
+                <table class="responsive-table striped">
+                        <thead>
+                          <tr>
+                              <th>Customer</th>
+                              <th>Product</th>
+                              <th>Quantity</th>
+                              <th>Selling Price</th>
+                              <th>Total Amount</th>
+                              <th>Action</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody>
+                          <tr v-if="sales.length == 0">
+                            <td colspan="5" style="text-align:center;"> No Sales </td>
+                          </tr>
+                          <tr v-for="sale in sales">
+                            <td>{{sale.contact_name}}</td>
+                            <td>{{sale.item_name}}</td>
+                            <td>{{sale.quantity}}</td>
+                            <td>{{sale.price}}</td>
+                            <td>{{sale.recievable}}</td>
+                            <th><a @click="makePayment(sale.id)">Make Payment</a></th>
+                          </tr>
+                        </tbody>
+                </table>
+            </div>

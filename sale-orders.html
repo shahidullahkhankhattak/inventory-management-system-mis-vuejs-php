@@ -1,0 +1,86 @@
+
+            <div class="contain animated zoomIn" align="center">
+                <router-link class="btn btn-floating waves-effect btn-large teal darken-2" to="/" style="float:left;"><i class="material-icons left">arrow_back</i></router-link>
+                <div style="clear:both"></div>
+                <div style="margin-top:10px;padding:25px;padding-top:10px;box-shadow:0px 0px 5px rgba(0,0,0,0.15); box-shadow:0px 0px 25px rgba(0,0,0,0.25);background:white;border-radius:4px;" align="left">
+                  <h5>New Sale</h5>
+                  <form @submit.prevent="makeSale()">
+                    <div class="row">
+                      <div class="col m6">
+                        <select style="display:block;border:none;border-bottom:1px solid grey;" v-model="sale.itemid">
+                          <option value="">-- Select Item --</option>
+                          <option v-for="item in items" :value="item.id">{{item.name}}</option>
+                        </select>
+                      </div>
+                      <div class="col m6">
+                        <input type="number" placeholder="Enter Item Quantity . ." v-model="sale.quantity">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col m6">
+                        <input type="number" placeholder="Enter Per Item Sale Price . . " v-model="sale.price">
+                      </div>
+                      <div class="col m6">
+                        <input type="text" placeholder="Total Amount . . " :value="sale.price*sale.quantity" disabled>
+                      </div>
+                      <div class="col m6">
+                        <select style="display:block;border:none;border-bottom:1px solid grey;" v-model="sale.contactid">
+                          <option value="">-- Select Contact --</option>
+                          <option value="0">N/A</option>
+                          <option v-for="contact in contacts" :value="contact.id" v-if="contact.name != 'N/A'">{{contact.name}}</option>
+                        </select>
+                      </div>
+                      <div class="col m6">
+                        <select style="display:block;border:none;border-bottom:1px solid grey;" v-model="sale.payment_method">
+                          <option value="">-- Payment Mode --</option>
+                          <option value="cash">cash</option>
+                          <option value="credit" v-if="sale.contactid != '0'">credit</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col m6">
+                        <button type="submit" class="btn btn-primary"><i class="material-icons left">&#xE876;</i>Make Sale</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <h4 class="teal darken-2 white-text" style="padding:10px;">Sales</h4>
+                <table class="responsive-table striped">
+                        <thead>
+                          <tr>
+                              <th>Invoice Number</th>
+                              <th>Item Name</th>
+                              <th>Price</th>
+                              <th>Quantity</th>
+                              <th>Cash Value</th>
+                              <th>Contact</th>
+                              <th>Payment Method</th>
+                              <th>Date</th>
+                              <th>Action</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody>
+                          <tr v-if="sales.length == 0">
+                              <td colspan="9" style="text-align:center;">
+                                <h5>No Sales</h5>
+                              </td>
+                          </tr>
+                          <tr v-for="sale in sales">
+                            <td>{{sale.id}}</td>
+                            <td>{{sale.item}}</td>
+                            <td>{{sale.price}}</td>
+                            <td>{{sale.quantity}}</td>
+                            <td>{{sale.price * sale.quantity}}</td>
+                            <td>{{sale.contact}}</td>
+                            <td>{{sale.payment_method}}</td>
+                            <td>{{sale.date}}</td>
+                            <td>
+                              <a @click="deleteSale(sale.id, sale.quantity)">Delete</a>
+                            </td>
+                          </td>
+                          </tr>
+                        </tbody>
+                </table>
+            </div> 

@@ -1,0 +1,39 @@
+
+            <div class="contain animated fadeInRight" align="center">
+                <router-link class="btn btn-floating waves-effect btn-large blue darken-2" to="/contacts" style="float:left;"><i class="material-icons left">arrow_back</i></router-link>
+                <div style="clear:both"></div>
+                <h4 class="blue darken-2 white-text" style="padding:10px;">{{details.length > 0 ? details[0].contact : ''}} Sales Details</h4>
+                <table class="responsive-table striped">
+                    <thead>
+                      <tr>
+                          <th>Invoice Number</th>
+                          <th>Item Name</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Cash Value</th>
+                          <th>Contact</th>
+                          <th>Payment Method</th>
+                          <th>Date</th>
+                      </tr>
+                    </thead>
+            
+                    <tbody>
+                      <tr v-if="details.length == 0">
+                          <td colspan="9" style="text-align:center;">
+                            <h5>No Sales</h5>
+                          </td>
+                      </tr>
+                      <tr v-for="sale in details">
+                        <td>{{sale.id}}</td>
+                        <td>{{sale.item}}</td>
+                        <td>{{sale.price}}</td>
+                        <td>{{sale.quantity}}</td>
+                        <td>{{sale.price * sale.quantity}}</td>
+                        <td>{{sale.contact}}</td>
+                        <td>{{sale.payment_method}}</td>
+                        <td>{{sale.date}}</td>
+                      </td>
+                      </tr>
+                    </tbody>
+            </table>
+            </div>

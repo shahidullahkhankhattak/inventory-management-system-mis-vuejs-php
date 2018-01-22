@@ -1,0 +1,26 @@
+
+            <div class="contain animated fadeInUp" align="center">
+                <router-link class="btn btn-floating waves-effect btn-large green darken-2" to="/accounts" style="float:left;"><i class="material-icons left">arrow_back</i></router-link>
+                <div style="clear:both"></div>
+                <h4 class="green darken-2 white-text" style="padding:10px;">Business Overall Inventory Cash Details</h4>
+                <table class="responsive-table striped">
+                        <thead>
+                          <tr>
+                              <th>Item Name</th>
+                              <th>Cash Value</th>
+                          </tr>
+                        </thead>
+                
+                        <tbody>
+                          <tr v-if="inventories.length == 0">
+                            <td style="text-align:center;">
+                              Nothing In Inventory
+                            </td>
+                          </tr>
+                          <tr v-for="inventory in inventories">
+                            <td>{{inventory.name}}</td>
+                            <td>{{inventory.cash_value}}</td>
+                          </tr>
+                        </tbody>
+                </table>
+            </div> 
